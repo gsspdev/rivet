@@ -1,0 +1,176 @@
+version: 4
+data:
+  attachedData:
+    trivet:
+      testSuites:
+        - id: i7ZH5qv0-qchTgdNqEIP8
+          testCases: []
+          testGraph: a
+          validationGraph: a
+      version: 1
+  graphs:
+    sikzhUJFn0TAaH619cegx:
+      metadata:
+        attachedData:
+          gentracePipeline:
+            archivedAt: null
+            branch: main
+            createdAt: 2024-01-23T23:15:00.798Z
+            displayName: gentrace-pipeline-1
+            folderId: null
+            id: a1292349-8e53-449c-ba0a-16210660ca95
+            labels: []
+            organizationId: eadce885-bda4-4aed-8a79-680b44b6adf3
+            privateMemberId: null
+            savedResultDisplay: null
+            savedRunsDisplay: null
+            slug: gentrace-pipeline-1
+            updatedAt: 2024-01-23T23:15:00.798Z
+        description: primary graph
+        id: sikzhUJFn0TAaH619cegx
+        name: main
+      nodes:
+        '[AGdeFb9eB1jlr9UoQ5EIL]:shellCommand "Shell Command"':
+          data:
+            command: "{{{input}}"
+            errorOnNonZeroExitCode: false
+            useCommandInput: true
+            useWorkingDirectoryInput: true
+            workingDirectory: /
+          outgoingConnections:
+            - output->"Output" gcMYSwH-CgYMty76Kh1qx/input
+            - stderr->"StdErr" xA3ReuDlXAKcAMBqv3Dvv/input
+            - stdout->"StdOut" BfPBMfyYTnb-mME9mGb55/input
+          visualData: 1448.1936236645593/271.6495373259245/230/54//
+        '[BfPBMfyYTnb-mME9mGb55]:text "StdOut"':
+          data:
+            text: "{{input}}"
+          visualData: 1745.0627642030734/283.01297511594447/330/61//
+        '[CwQHFtRFV-jeU7iy1A3iA]:chat "Chat"':
+          data:
+            cache: false
+            enableFunctionUse: false
+            frequencyPenalty: 0
+            headers: []
+            maxTokens: 1024
+            model: gpt-4
+            presencePenalty: 0
+            stop: ""
+            temperature: 0.5
+            toolChoice: ""
+            top_p: 1
+            useAsGraphPartialOutput: true
+            useFrequencyPenaltyInput: false
+            useMaxTokensInput: false
+            useModelInput: true
+            usePresencePenaltyInput: false
+            useStop: false
+            useStopInput: false
+            useTemperatureInput: false
+            useToolChoiceInput: false
+            useTopP: false
+            useTopPInput: false
+            useUseTopPInput: false
+            useUserInput: false
+          outgoingConnections:
+            - response->"Response" t5Kq_c7OSlnm04wkjnGPF/input
+          visualData: 426/162/230/null//
+        '[EctxpQ86yjYmEF_jySGBm]:extractMarkdownCodeBlocks "Extract Markdown Code Blocks"':
+          outgoingConnections:
+            - allBlocks->"All" mFRmrfAKu7XlfhbqLO5z2/input
+            - firstBlock->"Shell Command" AGdeFb9eB1jlr9UoQ5EIL/command
+          visualData: 713.8851807598885/642.7383939861822/280/59//
+        '[Fg1yLnHWKiTcabZgoGS-H]:userInput "User Input"':
+          data:
+            prompt: "Ask a question about pen-testing:"
+            useInput: false
+          outgoingConnections:
+            - output->"Chat" CwQHFtRFV-jeU7iy1A3iA/prompt
+          visualData: 32.31918172860706/303.2688537015001/280/57//
+        '[IG6Kje80ehpauqaA-5_bB]:boolean "Bool"':
+          data:
+            value: false
+          visualData: 2029.9018878899817/1049.745136629728/160/null//
+        '[ZumdBmnRF6r8nhVOKOb7K]:text "Bash - System Prompt"':
+          data:
+            text: Return bash commands, and text explaining the usage. Assume 192.168.1.1/24
+              for target.
+          outgoingConnections:
+            - output->"Chat" CwQHFtRFV-jeU7iy1A3iA/systemPrompt
+          visualData: -141.2868711989051/-29.1571572193086/330/56//
+        '[gcMYSwH-CgYMty76Kh1qx]:text "Output"':
+          data:
+            text: "{{input}}"
+          visualData: 1746.8937545000508/96.09204032066862/330/50//
+        '[mFRmrfAKu7XlfhbqLO5z2]:text "All"':
+          data:
+            text: "{{input}}"
+          visualData: 1053.850363177234/487.59702218915226/330/48//
+        '[t5Kq_c7OSlnm04wkjnGPF]:text "Response"':
+          data:
+            text: "{{input}}"
+          outgoingConnections:
+            - output->"Extract Markdown Code Blocks" EctxpQ86yjYmEF_jySGBm/input
+          visualData: 699.3166948944473/123.51728215440164/330/43//
+        '[xA3ReuDlXAKcAMBqv3Dvv]:text "StdErr"':
+          data:
+            text: "{{input}}"
+          visualData: 1744.3308971310373/478.17532200555723/330/60//
+  metadata:
+    description: just some experimentation
+    id: rb1iq5shnG056iSPmrxzo
+    mainGraphId: sikzhUJFn0TAaH619cegx
+    title: first-project
+  plugins:
+    - id: anthropic
+      name: Anthropic
+      type: built-in
+    - id: huggingFace
+      name: Hugging Face
+      type: built-in
+    - id: openai
+      name: OpenAI
+      type: built-in
+    - id: rivet-plugin-ollama@latest
+      package: rivet-plugin-ollama
+      tag: latest
+      type: package
+    - id: gentrace
+      name: Gentrace
+      type: built-in
+    - id: rivet-plugin-fs@latest
+      package: rivet-plugin-fs
+      tag: latest
+      type: package
+    - id: rivet-plugin-example-python-exec@latest
+      package: rivet-plugin-example-python-exec
+      tag: latest
+      type: package
+    - id: assemblyAi
+      name: AssemblyAI
+      type: built-in
+    - id: autoevals
+      name: AutoEvals
+      type: built-in
+    - id: rivet-plugin-chromadb@latest
+      package: rivet-plugin-chromadb
+      tag: latest
+      type: package
+    - id: rivet-plugin-example@latest
+      package: rivet-plugin-example
+      tag: latest
+      type: package
+    - id: google
+      name: Google
+      type: built-in
+    - id: rivet-plugin-mongodb@latest
+      package: rivet-plugin-mongodb
+      tag: latest
+      type: package
+    - id: rivet-oobabooga-plugin@latest
+      package: rivet-oobabooga-plugin
+      tag: latest
+      type: package
+    - id: pinecone
+      name: Pinecone
+      type: built-in
